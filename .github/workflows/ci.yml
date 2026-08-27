@@ -7,9 +7,9 @@ on:
 
 permissions:
   contents: read
-  packages: write
 
 jobs:
+
   build:
 
     runs-on: ubuntu-latest
@@ -33,19 +33,16 @@ jobs:
         run: |
           python -m py_compile app.py
 
-      - name: Login to GitHub Container Registry
+      - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
         run: |
-          IMAGE_NAME=$(echo "ghcr.io/${{ github.repository }}:latest" | tr '[:upper:]' '[:lower:]')
-          docker build -t $IMAGE_NAME .
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/sentence_classifier:latest .
 
       - name: Push Docker image
         run: |
-          IMAGE_NAME=$(echo "ghcr.io/${{ github.repository }}:latest" | tr '[:upper:]' '[:lower:]')
-          docker push $IMAGE_NAME
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/sentence_classifier:latest
