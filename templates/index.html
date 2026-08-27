@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Smart Text Response Classifier</title>
+
+</head>
+
+
+<body>
+
+    <h1>Smart Text Response Classifier</h1>
+
+    <p>
+        Enter an English or Hinglish sentence.
+    </p>
+
+
+    <!-- FORM -->
+
+    <form method="POST">
+
+        <label>
+            Enter your text:
+        </label>
+
+        <br><br>
+
+        <textarea
+            name="text"
+            rows="5"
+            cols="60"
+            placeholder="Example: Mujhe office late pahuchna hai"
+        ></textarea>
+
+        <br><br>
+
+        <button type="submit">
+            Predict
+        </button>
+
+    </form>
+
+
+    <!-- ERROR -->
+
+    {% if error %}
+
+        <h3>Error:</h3>
+
+        <p>
+            {{ error }}
+        </p>
+
+    {% endif %}
+
+
+    <!-- RESULT -->
+
+    {% if result %}
+
+        <hr>
+
+        <h2>Prediction Result</h2>
+
+
+        <p>
+            <strong>Input:</strong>
+            {{ result.text }}
+        </p>
+
+
+        <p>
+            <strong>Language:</strong>
+            {{ result.language }}
+        </p>
+
+
+        <p>
+            <strong>Language Confidence:</strong>
+            {{ result.language_confidence * 100 }}%
+        </p>
+
+
+        <p>
+            <strong>Category:</strong>
+            {{ result.category }}
+        </p>
+
+
+        <p>
+            <strong>Category Confidence:</strong>
+            {{ result.confidence * 100 }}%
+        </p>
+
+
+        <p>
+            <strong>Response:</strong>
+            {{ result.response }}
+        </p>
+
+
+    {% endif %}
+
+
+</body>
+
+</html>
