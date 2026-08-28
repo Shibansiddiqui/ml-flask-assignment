@@ -68,39 +68,37 @@ def home():
     )
 
 
-@app.route("/predict", methods=["POST"])
-def predict():
+# @app.route("/predict", methods=["POST"])
+# def predict():
+#
+#     data = request.get_json()
+#
+#     if not data:
+#         return jsonify({
+#             "error": "Request body is required."
+#         }), 400
+#
+#     text = data.get("text", "").strip()
+#
+#     if not text:
+#         return jsonify({
+#             "error": "Please enter some text."
+#         }), 400
+#
+#     try:
+#         result = predict_text(text)
+#
+#         return jsonify(result)
+#
+#     except Exception as e:
+#         return jsonify({
+#             "error": f"Prediction error: {str(e)}"
+#         }), 500
 
-    data = request.get_json()
-
-    if not data:
-        return jsonify({
-            "error": "Request body is required."
-        }), 400
-
-    text = data.get("text", "").strip()
-
-    if not text:
-        return jsonify({
-            "error": "Please enter some text."
-        }), 400
-
-    try:
-        result = predict_text(text)
-
-        return jsonify(result)
-
-    except Exception as e:
-        return jsonify({
-            "error": f"Prediction error: {str(e)}"
-        }), 500
-
-if __name__ == "__main__":
-
-    port = int(os.environ.get("PORT", 5000))
-
-    app.run(
-        host="0.0.0.0",
-        port=port,
-        debug=True
-    )
+# if __name__ == "__main__":
+#     port = int(os.environ.get("PORT", 5000))
+#     app.run(
+#         host="0.0.0.0",
+#         port=port,
+#         debug=False
+#     )
