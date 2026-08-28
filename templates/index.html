@@ -5,12 +5,16 @@
 <head>
 
     <title>Smart Text Response Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+
+
 
 </head>
 
 
 <body>
-
+    <div class="box">
     <h1>Smart Text Response Classifier</h1>
 
     <p>
@@ -30,9 +34,9 @@
 
         <textarea
             name="text"
-            rows="5"
-            cols="60"
-            placeholder="Example: Mujhe office late pahuchna hai"
+            rows="2"
+            cols="40"
+            placeholder=""
         ></textarea>
 
         <br><br>
@@ -104,7 +108,7 @@
 
     {% endif %}
 
-
+</div>
 </body>
 
 </html>
