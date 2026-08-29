@@ -9,12 +9,27 @@ category_model = joblib.load("models/category_model.pkl")
 
 responses = {
     "Health": "You seem to be expressing a health-related concern.",
-    "Mood": "You seem to be expressing a concern about your mood.",
+
+    "Mood/Emotion": "You seem to be expressing a concern about your mood or emotional state.",
+
     "Work/Office": "You are informing that you have a work or office-related matter.",
-    "Travel": "You seem to be talking about a travel-related matter.",
-    "Complaint": "You seem to be reporting a complaint or service-related issue.",
-    "General": "You seem to be asking for general information or clarification."
+
+    "Travel": "You seem to be talking about a travel or transportation-related matter.",
+
+    "Education": "You seem to be talking about an education or study-related matter.",
+
+    "Food": "You seem to be talking about food, cooking, or a meal-related matter.",
+
+    "Technology": "You seem to be talking about a technology or technical-related matter.",
+
+    "General/Other": "You seem to be asking for general information or discussing a general matter.",
+
+    "Shopping": "You seem to be talking about a shopping, product, or purchase-related matter.",
+
+    "Finance": "You seem to be talking about a financial, banking, or payment-related matter."
 }
+
+
 def predict_text(text):
 
     language = language_model.predict([text])[0]
